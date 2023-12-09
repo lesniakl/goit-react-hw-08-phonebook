@@ -3,10 +3,11 @@ import React from 'react';
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import Layout from './Layout';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import RestrictedRoute from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
 import { refreshUser } from '../redux/auth/operations';
+import { LinearProgress } from '@mui/material';
 
 const Home = lazy(() => import('../pages/Home'));
 const Register = lazy(() => import('../pages/Register'));
@@ -22,7 +23,7 @@ export default function App() {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <LinearProgress />
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -46,6 +47,7 @@ export default function App() {
           }
         />
       </Route>
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }

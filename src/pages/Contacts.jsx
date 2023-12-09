@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../redux/contacts/operations';
 import { selectLoading } from '../redux/contacts/selectors';
 import Filter from 'components/Filter/Filter';
+import { Container, LinearProgress } from '@mui/material';
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -15,11 +16,11 @@ export default function Contacts() {
   }, [dispatch]);
 
   return (
-    <>
+    <Container maxWidth="md" sx={{ mt: 4 }}>
       <ContactForm />
       <Filter />
-      <div>{isLoading && 'Request in progress...'}</div>
+      <div>{isLoading && <LinearProgress />}</div>
       <ContactList />
-    </>
+    </Container>
   );
 }
