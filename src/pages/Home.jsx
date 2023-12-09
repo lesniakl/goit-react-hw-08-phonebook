@@ -8,7 +8,7 @@ export default function Home() {
         Welcome to SimplePhonebook
       </Typography>
       <Typography variant="h5" sx={{ textAlign: 'center', mt: 3 }}>
-        Storing all our your important contacts since today
+        Storing all of your important contacts since today
       </Typography>
     </Container>
   );
